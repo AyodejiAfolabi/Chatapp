@@ -1,0 +1,36 @@
+<div class="row btj"><input [(ngModel)]="filterText" placeholder="search ...." class="bs"></div>
+<div style="overflow: auto; cursor: pointer; max-height: 450px;">
+<div class="bc" *ngFor="let i=index; let each of arr | chatpipe:filterText">
+    <div (click)="chat(i)" style="border-bottom: 1px solid grey; height: 70px; display: flex;" class="bg-basic">
+        <div style="width: 50px; height: 50px; margin-top: 10px; border-radius: 100%;   background-color:grey;"><img style="width:100%; border-radius: 100%; height:100%" [src]="each.img"/></div>
+      <h6 style="margin-top: 20px;font-size: 15px; font-family: cursive; margin-left: 10px;">  {{each.name}}</h6>
+      <!-- <h6>{{i+1 | message : each.name }}</h6> -->
+      <h6 *ngIf="!each.show" style="margin-top:30px; margin-left: 10px; font-size: 16px;font-family: monospace;" [class.text-success]="each.mine" [class.text-danger]="!each.mine">{{each.last | shorten}}</h6>
+
+      <h6 *ngIf="each.show" style="margin-top:30px; margin-left: 10px; font-size: 16px;font-family: monospace;" [class.text-success]="each.mine" [class.text-danger]="!each.mine">This Mess.....</h6>
+
+</div>
+</div>
+
+</div>
+<button style="margin-top: 10%;" class="btn btn-danger" (click)="logout()">Log Out</button>
+<style>
+    .bc:hover{
+        background-color: darkkhaki;
+    }
+    .btj{
+        background-color:whitesmoke;
+        height: 70px;
+        /* width: 100%; */
+        
+    }
+    .bs,.bs:focus{
+        background-color:white;
+        border-radius: 10px;
+        border:1px solid white;
+        margin-top: 10px;
+        margin-left: 20px;
+        height: 40px;
+        width: 80%;
+    }
+</style>

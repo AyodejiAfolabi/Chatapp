@@ -1,0 +1,73 @@
+<img width="90px" height="70px" *ngIf="disp" [src]="img"/>
+
+    
+        <form    [formGroup]="userForm">
+            <input class="form-control tt" id="inp"  formControlName="fullName" placeholder="FullName"/>
+            <span  style="margin-top:-25px" class="text-danger" *ngIf="userForm.get('fullName').invalid">
+            
+                    <span  class="text-danger" *ngIf="userForm.get('fullName').errors.begin">Must start with capital letter</span> 
+       
+                    <span  class="text-danger" *ngIf="userForm.get('fullName').errors.characters">Numeric character Not allowed</span> 
+       
+            
+            </span>
+            <input  class="form-control tt" id="inp" formControlName="name" placeholder="UserName"/>
+            <h6 class="text-danger" *ngIf="uname">A user with the same User already exist</h6> 
+ 
+            <span style="margin-top:-25px"class="text-danger" *ngIf="userForm.get('name').invalid">
+
+                <span  *ngIf="userForm.get('name').errors.length">8 charcters Min</span> 
+            </span>
+            <input  (input)="real()" type="password" class="form-control tt"id="inp"  formControlName="password" placeholder="Password"/>
+            
+            <input (input)="con()" type="password" class="form-control tt"id="inp"  formControlName="conPassword" placeholder="Confirm Password"/>
+           <span style="margin-top:-25px" class="text-danger" *ngIf="match">
+            <span  *ngIf="match">Password doesnt match</span> 
+       
+           </span>
+            <input  class="form-control tt" id="inp" formControlName="email" placeholder="Email"/>
+            <span style="margin-top:-25px" class="text-danger"   *ngIf="uemail">A user with the same Email already exist</span> 
+            <span style="margin-top:-25px" class="text-danger" *ngIf="userForm.get('email').invalid">
+                <span  *ngIf="userForm.get('email').errors.characters">Invalid Email
+                </span> 
+       
+            </span>
+            
+            <h6 style="margin-top: 5px; "><input  type="file" style="display: inline; font-size: 15px;" formControlName="img" (input)="pic()">
+                <small >Group </small> <input style="cursor:pointer"  type="checkbox" (click)="dd()"></h6>
+           
+                <textarea  class="ta" formControlName="desc" placeholder="add Description"></textarea>
+            <h6 style="margin-top: -40px; margin-left: 25%; font-size: 16px;" *ngIf="group">
+                <h6 style="font-size: 18px; font-family: monospace;">Select Admins</h6>
+<!-- <span > -->
+    <select (click)="admin1()" id="admin1" >
+    
+        <option style="font-size: 15px; cursor: pointer;cursor: pointer;" [value]="i"  *ngFor="let i=index;let each of arr" >{{each.name}}</option>
+    </select>
+    <select (click)="admin2()" id="admin2" style=" margin-left: 5%; cursor: pointer;">
+        <option style="font-size: 15px;  cursor: pointer;" [value]="i" *ngFor="let i=index;let each of arr">{{each.name}}</option>
+    </select>
+<!-- </span> -->
+</h6>
+<button [disabled]="!userForm.touched" class="form-control btn btn-danger"  (click)="sub()">Submit</button>
+
+<div *ngIf="complete" class="text-danger">Please Fill in all Inputs Correctly</div>
+</form>
+<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
+<style>
+
+    .tt{
+        line-height: 1px;
+        font-size: 15px;
+    }
+    .ta{
+        margin-top: -33px;
+        height: 60px;
+        margin-left: 70%;
+        padding-left: 10px;
+        font-size: 15px;
+    }
+    .tj{
+        margin-top: -30px;
+    }
+</style>

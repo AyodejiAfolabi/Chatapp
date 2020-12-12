@@ -1,0 +1,152 @@
+
+<body>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+<div class="row ty" style="width:997px">
+<div class="col-3 bg-white " style="margin-left: 5px;cursor: pointer;">
+<div class="row mt-4 ml-2" style="padding-left: 7px; width: 100%;  border-radius: 10px;"><img  class="b ml-4" [src]="myObj.img"/></div>
+<div style="border-bottom: 1px solid grey;  margin-top: 20px;">
+  <span>User Name:</span>
+  <h6>{{myObj.name}}</h6>
+  </div><br>
+  <div style="border-bottom: 1px solid grey;margin-top: -40px;">
+    <span>About:</span>
+    <h6>{{myObj.desc}}</h6>
+    </div>
+  
+    <div style="border-bottom: 1px solid grey;margin-top: -30px;">
+      <span>Account created on:</span>
+      <h6>{{myObj.created}}</h6>
+      </div>
+</div>
+</div>
+  </div>
+  <!-- <div class="row bg-warning"> -->
+<div class="row bg-white border-bottom tm"  style="height: 80px; z-index:1;">
+<span (click)="openNav()" style="width: 55px; cursor: pointer;  height: 55px; border-radius: 100%; margin-left: 12%; margin-top: 17px; background-color: grey;">
+  <img style="width:100%; border-radius: 100%; height:100%" [src]="myObj.img"/>
+</span>
+<h6 style="margin-top: 28px; margin-left: 12px;">{{holder}}</h6>
+
+
+
+
+
+
+
+<div id="mySidenavs" class="sidenavs">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNavs()">&times;</a>
+<div class="row ty" >
+<div class="col-8  "  style=" margin-left: 15%; cursor: pointer; overflow: auto; background-color: whitesmoke; ">
+<span class="tz">PROFILE</span>
+  <div class="row mt-4 ml-2" style="padding-left: 7px; width: 100%;  border-radius: 10px;"><img  class="b ml-4" [src]="recArr.img"/></div>
+<div style="border-bottom: 1px solid grey; margin-top: 5px;">
+<span>User Name:</span>
+<h6>{{recArr.name}}</h6>
+</div>
+<div style="border-bottom: 1px solid grey; margin-top: -15px; font-family: monospace;">
+  <span>About:</span>
+  <h6>{{recArr.desc}}</h6>
+  </div>
+<div style="border-bottom: 1px solid grey; font-size: 16px; margin-top: -30px; " *ngIf="recArr.group">
+  <span style="font-size: 16px; font-family: monospace;" >ADMINS</span>
+  <div *ngFor="let i=index;let each of recArr.admins">
+<h6 style="font-size: 16px; font-family: monospace;">{{i+1}}. {{each.name}}</h6>
+  </div>
+<h5 style="font-family: cursive;">Type:Social Group</h5>
+</div>
+  <!-- <div style="border-bottom: 1px solid grey;">
+    <span>Account created on:</span>
+    <h6>{{myObj.created}}</h6>
+    </div> -->
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<span *ngIf="ctn" (click)="showNav()" style="width: 55px; cursor: pointer; height: 55px; border-radius: 100%; margin-left: 15%; margin-top: 17px; background-color: rgb(214, 25, 25);">
+  <img style="width:100%; border-radius: 100%; height:100%" [src]="recArr.img"/>
+</span>
+<h6 style="margin-top: 28px; margin-left: 12px;">{{rec}}</h6>
+
+</div>
+
+ <div class="row" style="height: 50px;">
+    <div class="col-3 bg-red border-right">
+        <app-personal></app-personal>
+    </div>
+    <div class="col-8 bg-red" id="tt">
+      <app-chat></app-chat>
+
+    </div>
+    </div> 
+    </body>
+<!-- </div> -->
+<style>
+  body {
+      font-family: "Lato", sans-serif;
+  }
+  
+  .sidenav, .sidenavs{
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      font-family: cursive;
+      font: outline;
+      transition: 0.5s;
+      padding-top: 60px;
+  }
+  
+  /* .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+  } */
+  
+  .sidenav a:hover {
+      color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn,.sidenavs .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav,.sidenavs {padding-top: 15px;}
+    .sidenav a,.sidenavs a {font-size: 18px;}
+  }
+  .ty{
+    height: 100%;
+    opacity: 1;
+    background-color:black;
+    /* margin-left: 70%; */
+  }
+  .b{
+    margin-left: 5%;
+    height:100px; width:100px; border-radius: 100%;
+  }
+  .tz{
+    background-color: black; font-family: cursive; height: 70px;font-size:30px;
+    padding-left: 10%;
+  }
+  </style>

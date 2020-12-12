@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap4/css/bootstrap.css";
+/* @import "~bootstrap4/css/all.css"; */
+.ts{
+    height: 100px;
+    margin-left: 10%;
+    width: 100%;
+}
+.tj{
+    height: 70px;
+}
+.tm{
+    height: 100px;
+}
+.st{
+    margin-left: 20%;
+    height:420px;
+    width:10px;
+    margin-top: 50px;
+}
+.bj{
+    margin-top:40px ;
+    margin-left: 5%;
+}
+#inp{
+    border:none;
+    border-bottom: 1px dashed grey;
+}
+.bt{
+    width:100px;
+    border: 1px solid yellow;
+    margin-left: 20px;
+    height:60px;
+}
+.head{
+    font-family: cursive;
+    margin-left: 5%;
+    color: white;
+    margin-top: 10px;
+}
+.heads{
+    font-family: cursive;
+    margin-left: 8%;
+    color: white;
+    margin-top: 50px;
+}

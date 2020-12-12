@@ -1,0 +1,192 @@
+
+<div *ngIf="status">
+   
+   <!-- <h2>{{recipient}}</h2> -->
+   <div style="overflow-wrap: break-word; overflow: auto; cursor: pointer; height: 500px;">
+      <input [(ngModel)]="filterText" placeholder="search ...."  class="bs">
+<div  *ngFor="let i=index let each of arrs | messages:filterText" >
+   
+   <div   *ngIf="each.intro" style="background-color:lightgreen; font-family:cursive; width: 20%; padding-left: 10px; margin-left:40%;">
+      {{each.text}}</div>
+
+   <div   *ngIf="each.check
+   &&!each.intro"[class.tsm]="each.admindel" [class.tsk]="each.del" [class.text-danger]="each.del" [class.tsm]="each.del" style="background-color:lightgreen; font-family:cursive; width: 20%; padding-left: 10px; margin-left:80%;">
+   <div *ngIf="!each.seen" style="margin-left: 80%; color:grey" class="fa fa-check" ></div>
+   <div *ngIf="each.seen"  style="margin-left: 80%; color: #1671E8" class="fa fa-check" ></div>
+<h6 *ngIf="!each.del&&!each.admindel">{{each.text}}</h6>
+<h6 [class.tsk]="each.del||each.admindel" *ngIf="each.del||each.admindel">This Message has been deleted</h6>
+<h6><br>
+   <small> {{each.exac}}</small><div *ngIf="!each.del" (click)="del(i)" style="margin-left: 80%;" class="text-danger fa fa-trash" ></div>
+   <!-- <div *ngIf="!each.seen" class="bg-warning ts" ></div> -->
+
+</h6>
+   </div>
+   <div *ngIf="!each.check
+   &&!each.intro" [class.text-danger]="each.admindel" [class.tsm]="each.admindel" style="background-color:wheat; font-family:cursive; width: 20%; padding-left: 10px; margin-left:10%;">
+   <h6 *ngIf="!each.del&&!each.admindel">{{each.text}}</h6>
+   <h6 [class.tsk]="each.del || each.admindel" *ngIf="each.del||each.admindel">This Message has been deleted</h6>
+   <h6>
+       <small>{{each.exac}}</small>
+   
+      </h6>
+      <h6>
+         <!-- <small *ngIf="!each.all">{{each.id}}</small> -->
+         <small *ngIf="each.all ">{{each.id}}</small>
+         
+    <div *ngIf="each.all&&admin&&!each.admindel&&!each.del"  (click)="deli(i)" style="float:right" class="text-danger fa fa-trash" ></div>
+     
+        </h6>
+
+       </div>
+</div>
+
+       
+   
+   </div>
+<div >
+<input placeholder="Type a Message ......." [(ngModel)]="chat" class="inp "/>
+<!-- <a href="#" class="button" (click)="submit()">Hover me</a> -->
+<button class="button" (click)="submit()">Send</button>
+</div>
+</div>
+
+
+
+
+
+
+
+<style>
+   .bst{
+      background-color: yellow;
+   }
+</style>
+
+
+
+
+
+
+
+<style>
+    .inp{
+        width: 80%;
+        height: 34px;
+        padding-left: 30px;
+        
+        font-family: cursive;
+        border-radius: 7px;
+    }
+
+    .ts{
+      width: 10px; cursor: pointer; height: 10px;border-radius: 100%;margin-left: 90%;
+      margin-bottom: 10px;
+    }
+    .bs,.bs:focus{
+        background-color:white;
+        border-radius: 10px;
+        border:1px solid white;
+        margin-top: 10px;
+        margin-left: 20px;
+        height: 40px;
+        width: 80%;
+    }
+    /* .bt{
+       width: 70px;
+       height: 70px;
+       margin-left: 10%;
+       border-radius: 15%;
+    } */
+
+    .button {
+  width:100px;
+  height: 70px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #4FD1C5;
+background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  }
+
+button::before {
+content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #00FFCB;
+  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.button:hover, .button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+button:hover::before, button:focus::before {
+  opacity: 1;
+}
+
+button::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00FFCB;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+button:hover::after, button:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 100px;
+    height: 80px;
+    opacity: 0;
+  }
+}
+
+
+.tsm{
+  font-size: 13px;
+  /* height: 20px; */
+}
+.tsk{
+  font-size: 13px;
+  color: red;
+  margin: 10px;
+  /* background-color: beige; */
+  /* height: 20px; */
+}
+
+
+    
+</style>
